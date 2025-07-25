@@ -1,1 +1,5 @@
-spring.application.name=ai-code-mother-api
+spring:
+  application:
+    name: ai-code-mother-api
+  profiles:
+    active: local
