@@ -1,7 +1,7 @@
 package com.chengfu.aicodemotherapi.mapper;
 
 import com.mybatisflex.core.BaseMapper;
-import com.chengfu.model.entity.User;
+import com.chengfu.aicodemotherapi.model.entity.User;
 
 /**
  *  映射层。
