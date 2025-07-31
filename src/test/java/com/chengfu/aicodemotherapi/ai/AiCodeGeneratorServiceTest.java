@@ -28,6 +28,8 @@ class AiCodeGeneratorServiceTest {
         MultiFileCodeResult multiFileCode = aiCodeGeneratorService.generateMultiFileCode("做个程序员chengfu的留言板，大约20行代码以内");
         Assertions.assertNotNull(multiFileCode);
     }
+
+
 }
 
 
