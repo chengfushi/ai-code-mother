@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
  * @Author: Chengfu Shi
  * @Description:
  **/
+@Deprecated
 public class CodeFileSaver {
 
     // 文件保存根目录
