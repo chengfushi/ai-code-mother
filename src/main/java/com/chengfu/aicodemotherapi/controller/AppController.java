@@ -243,6 +243,26 @@ public class AppController {
     }
 
     /**
+     * 管理员删除应用
+     *
+     * @param deleteRequest 删除请求
+     * @return 删除结果
+     */
+    @PostMapping("/admin/delete")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    public BaseResponse<Boolean> deleteAppByAdmin(@RequestBody DeleteRequest deleteRequest) {
+        if (deleteRequest == null || deleteRequest.getId() <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        long id = deleteRequest.getId();
+        // 判断是否存在
+        App oldApp = appService.getById(id);
+        ThrowUtils.throwIf(oldApp == null, ErrorCode.NOT_FOUND_ERROR);
+        boolean result = appService.removeById(id);
+        return ResultUtils.success(result);
+    }
+
+    /**
      * 管理员更新应用
      *
      * @param appAdminUpdateRequest 更新请求
