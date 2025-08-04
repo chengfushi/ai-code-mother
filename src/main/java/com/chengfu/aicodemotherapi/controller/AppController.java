@@ -108,9 +108,9 @@ public class AppController {
         App app = new App();
         BeanUtil.copyProperties(appAddRequest, app);
         app.setUserId(loginUser.getId());
-        // 应用名称暂时为 initPrompt 前 12 位
+        // TODO 应用名称暂时为 initPrompt 前 12 位
         app.setAppName(initPrompt.substring(0, Math.min(initPrompt.length(), 12)));
-        // 暂时设置为多文件生成
+        // TODO 暂时设置为多文件生成
         app.setCodeGenType(CodeGenTypeEnum.MULTI_FILE.getValue());
         // 插入数据库
         boolean result = appService.save(app);
