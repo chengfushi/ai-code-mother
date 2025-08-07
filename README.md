@@ -7,6 +7,7 @@
 ## 二、技术栈
 
 ### 后端技术
+
 - **核心框架**：Spring Boot 3.5.4
 - **AI引擎**：LangChain4j
 - **JDK版本**：Java 21
@@ -16,8 +17,9 @@
 - **跨域处理**：自定义CorsConfig
 
 ### 前端技术
+
 - **框架**：Vue 3
-- **UI组件**：(ant-design-pro)
+- **UI组件**：(Ant-Design-Pro)
 - **状态管理**：(eslint+prettier)
 
 ## 三、项目架构
@@ -36,31 +38,37 @@
 ## 五、快速开始
 
 ### 环境要求
+
 - JDK 21+
 - Maven 3.6+
 - MySQL 8.0+
 
 ### 本地开发
+
 1. 克隆项目
+
 ```bash
 git clone https://github.com/chengfushi/ai-code-mother-api.git
 ```
 
 2. 配置数据库
+
    - 创建数据库
    - 修改 `application-local.yml` 中的数据库配置
-
 3. 启动项目
+
 ```bash
 mvn spring-boot:run
 ```
 
 4. 访问API文档
+
 ```
 http://localhost:8123/api/doc.html
 ```
 
 ## 六、项目结构
+
 ```
 ai-code-mother-api/
 ├── src/main/java/com/chengfu/aicodemotherapi/
@@ -78,6 +86,7 @@ ai-code-mother-api/
 ## 七、API文档
 
 项目集成了Knife4j，提供了美观易用的API文档。启动项目后访问：
+
 ```
 http://localhost:8123/api/doc.html
 ```
@@ -95,7 +104,7 @@ http://localhost:8123/api/doc.html
 ## 九、作者
 
 - [(Chengfu Shi)](https://github.com/chengfushi)
-- [Camellia](https://github.com/camellialoveit)
+- Camellia
 
 ## 十、许可证
 
@@ -104,5 +113,6 @@ http://localhost:8123/api/doc.html
 ## 十一、联系方式
 
 如有任何问题或建议，请通过以下方式联系我们：
+
 - GitHub Issues
 - Email: [待补充]
