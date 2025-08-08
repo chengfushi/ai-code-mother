@@ -1,5 +1,6 @@
 package com.chengfu.aicodemotherapi.service;
 
+import com.chengfu.aicodemotherapi.model.dto.app.AppAddRequest;
 import com.chengfu.aicodemotherapi.model.dto.app.AppQueryRequest;
 import com.chengfu.aicodemotherapi.model.entity.User;
 import com.chengfu.aicodemotherapi.model.vo.app.AppVO;
@@ -18,6 +19,8 @@ import java.util.List;
 public interface AppService extends IService<App> {
 
     Flux<String> chatToGenCode(Long appId, String message, User loginUser);
+
+    Long createApp(AppAddRequest appAddRequest, User loginUser);
 
     String deployApp(Long appId, User loginUser);
 
