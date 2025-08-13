@@ -1,12 +1,5 @@
 package com.chengfu.aicodemotherapi.core.handle;
 
-/**
- * @Author: Chengfu Shi
- * @Description:  JSON 消息流处理器
- * 处理 VUE_PROJECT 类型的复杂流式响应，包含工具调用信息
- **/
-
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
@@ -17,18 +10,23 @@ import com.chengfu.aicodemotherapi.constant.AppConstant;
 import com.chengfu.aicodemotherapi.core.builder.VueProjectBuilder;
 import com.chengfu.aicodemotherapi.model.entity.User;
 import com.chengfu.aicodemotherapi.model.enums.ChatHistoryMessageTypeEnum;
+import com.chengfu.aicodemotherapi.model.vo.user.UserVO;
 import com.chengfu.aicodemotherapi.service.ChatHistoryService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 /**
-
- */
+ * @Author: Chengfu Shi
+ * @Description:  JSON 消息流处理器
+ * 处理 VUE_PROJECT 类型的复杂流式响应，包含工具调用信息
+ **/
 @Slf4j
 @Component
 public class JsonMessageStreamHandler {
@@ -77,6 +75,7 @@ public class JsonMessageStreamHandler {
                     chatHistoryService.addChatMessage(appId, errorMessage, ChatHistoryMessageTypeEnum.AI.getValue(), loginUser.getId());
                 });
     }
+
 
     /**
      * 解析并收集 TokenStream 数据

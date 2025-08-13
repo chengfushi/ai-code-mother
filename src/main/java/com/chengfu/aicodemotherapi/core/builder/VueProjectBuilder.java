@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -31,6 +32,26 @@ public class VueProjectBuilder {
             }
         });
     }
+
+    // /**
+    //  * 异步构建项目（不阻塞主流程）
+    //  *
+    //  * @param projectPath 项目路径
+    //  */
+    // public CompletableFuture<Boolean> buildProjectAsync(String projectPath) {
+    //     CompletableFuture<Boolean> future = new CompletableFuture<>();
+    //     // 在单独的线程中执行构建，避免阻塞主流程
+    //     Thread.ofVirtual().name("vue-builder-" + System.currentTimeMillis()).start(() -> {
+    //         try {
+    //             boolean result = buildProject(projectPath);
+    //             future.complete(result);
+    //         } catch (Exception e) {
+    //             log.error("异步构建 Vue 项目时发生异常: {}", e.getMessage(), e);
+    //             future.completeExceptionally(e);
+    //         }
+    //     });
+    //     return future;
+    // }
     /**
      * 执行命令
      *

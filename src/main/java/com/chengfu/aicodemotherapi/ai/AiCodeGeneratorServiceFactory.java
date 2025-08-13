@@ -67,7 +67,7 @@ public class AiCodeGeneratorServiceFactory {
      * 根据 appId 获取服务（为了兼容老逻辑）
      *
      * @param appId
-     * @return
+     * @return AI 服务实例
      */
     public AiCodeGeneratorService getAiCodeGeneratorService(long appId) {
         return getAiCodeGeneratorService(appId, CodeGenTypeEnum.HTML);
@@ -78,7 +78,7 @@ public class AiCodeGeneratorServiceFactory {
      *
      * @param appId       应用 id
      * @param codeGenType 生成类型
-     * @return
+     * @return AI 服务实例
      */
     public AiCodeGeneratorService getAiCodeGeneratorService(long appId, CodeGenTypeEnum codeGenType) {
         String cacheKey = buildCacheKey(appId, codeGenType);
@@ -90,7 +90,7 @@ public class AiCodeGeneratorServiceFactory {
      *
      * @param appId       应用 id
      * @param codeGenType 生成类型
-     * @return
+     * @return AI 服务实例
      */
     private AiCodeGeneratorService createAiCodeGeneratorService(long appId, CodeGenTypeEnum codeGenType) {
         log.info("为 appId: {} 创建新的 AI 服务实例", appId);
@@ -105,7 +105,6 @@ public class AiCodeGeneratorServiceFactory {
         chatHistoryService.loadChatHistoryToMemory(appId, chatMemory, 20);
         return switch (codeGenType) {
             // Vue 项目生成，使用工具调用和推理模型
-// Vue 项目生成使用推理模型
             case VUE_PROJECT -> AiServices.builder(AiCodeGeneratorService.class)
                     .streamingChatModel(reasoningStreamingChatModel)
                     .chatMemoryProvider(memoryId -> chatMemory)
@@ -129,7 +128,7 @@ public class AiCodeGeneratorServiceFactory {
     /**
      * 创建 AI 代码生成器服务
      *
-     * @return
+     * @return AI 代码生成器服务
      */
     @Bean
     public AiCodeGeneratorService aiCodeGeneratorService() {
@@ -139,9 +138,9 @@ public class AiCodeGeneratorServiceFactory {
     /**
      * 构造缓存键
      *
-     * @param appId
-     * @param codeGenType
-     * @return
+     * @param appId 应用 id
+     * @param codeGenType 生成类型
+     * @return 缓存键
      */
     private String buildCacheKey(long appId, CodeGenTypeEnum codeGenType) {
         return appId + "_" + codeGenType.getValue();
