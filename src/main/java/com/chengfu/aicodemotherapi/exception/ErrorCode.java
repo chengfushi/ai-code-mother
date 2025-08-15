@@ -12,6 +12,7 @@ public enum ErrorCode {
     SUCCESS(0, "ok"),
     PARAMS_ERROR(40000, "请求参数错误"),
     NOT_LOGIN_ERROR(40100, "未登录"),
+    TOO_MANY_REQUEST(42900, "请求过于频繁"),
     NO_AUTH_ERROR(40101, "无权限"),
     NOT_FOUND_ERROR(40400, "请求数据不存在"),
     FORBIDDEN_ERROR(40300, "禁止访问"),
