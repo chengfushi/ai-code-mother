@@ -361,6 +361,4 @@ public class AppController {
         projectDownloadService.downloadProjectAsZip(sourceDirPath, downloadFileName, response);
     }
 
-
-
 }
