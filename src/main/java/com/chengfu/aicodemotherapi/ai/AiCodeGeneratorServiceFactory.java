@@ -1,6 +1,8 @@
 package com.chengfu.aicodemotherapi.ai;
 
 
+import com.chengfu.aicodemotherapi.ai.guardrail.PromptSafetyInputGuardrail;
+import com.chengfu.aicodemotherapi.ai.guardrail.RetryOutputGuardrail;
 import com.chengfu.aicodemotherapi.ai.tools.*;
 import com.chengfu.aicodemotherapi.config.ReasoningStreamingChatModelConfig;
 import com.chengfu.aicodemotherapi.exception.BusinessException;
@@ -111,6 +113,8 @@ public class AiCodeGeneratorServiceFactory {
                         .hallucinatedToolNameStrategy(toolExecutionRequest -> ToolExecutionResultMessage.from(
                                 toolExecutionRequest, "Error: there is no tool called " + toolExecutionRequest.name()
                         ))
+                        .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
+                        .outputGuardrails(new RetryOutputGuardrail())
                         .build();
             }
             case HTML, MULTI_FILE -> {
@@ -120,6 +124,8 @@ public class AiCodeGeneratorServiceFactory {
                         .chatModel(chatModel)
                         .streamingChatModel(openAiStreamingChatModel)
                         .chatMemory(chatMemory)
+                        .inputGuardrails(new PromptSafetyInputGuardrail()) // 添加输入护轨
+                        .outputGuardrails(new RetryOutputGuardrail())
                         .build();
             }
             default -> throw new BusinessException(ErrorCode.SYSTEM_ERROR,
