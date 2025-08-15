@@ -9,13 +9,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 /**
- * @Author: Chengfu Shi
- * @Description: 流式模型配置
+ * 通用流式模型聊天配置
+ *
+ * @author: Chengfu Shi
  **/
 @Configuration
-@ConfigurationProperties(prefix = "langchain4j.open-ai.reasoning-streaming-chat-model")
+@ConfigurationProperties(prefix = "langchain4j.open-ai.streaming-chat-model")
 @Data
-public class ReasoningStreamingChatModelConfig {
+public class StreamingChatModelConfig {
 
     private String baseUrl;
 
@@ -27,13 +28,13 @@ public class ReasoningStreamingChatModelConfig {
 
     private Double temperature;
 
-    private Boolean logRequests = false;
+    private boolean logRequests;
 
-    private Boolean logResponses = false;
+    private boolean logResponses;
 
     @Bean
     @Scope("prototype")
-    public StreamingChatModel reasoningStreamingChatModelPrototype() {
+    public StreamingChatModel streamingChatModelPrototype() {
         return OpenAiStreamingChatModel.builder()
                 .apiKey(apiKey)
                 .baseUrl(baseUrl)

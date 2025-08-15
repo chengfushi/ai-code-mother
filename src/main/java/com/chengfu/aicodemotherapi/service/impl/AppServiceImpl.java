@@ -6,6 +6,7 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
 import com.chengfu.aicodemotherapi.ai.AiCodeGenTypeRoutingService;
+import com.chengfu.aicodemotherapi.ai.AiCodeGenTypeRoutingServiceFactory;
 import com.chengfu.aicodemotherapi.constant.AppConstant;
 import com.chengfu.aicodemotherapi.core.AiCodeGeneratorFacade;
 import com.chengfu.aicodemotherapi.core.builder.VueProjectBuilder;
@@ -69,7 +70,7 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
     private ScreenshotService screenshotService;
 
     @Resource
-    private AiCodeGenTypeRoutingService aiCodeGenTypeRoutingService;
+    private AiCodeGenTypeRoutingServiceFactory aiCodeGenTypeRoutingServiceFactory;
 
     @Override
     public Flux<String> chatToGenCode(Long appId, String message, User loginUser) {
@@ -89,11 +90,11 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         if (codeGenTypeEnum == null) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR, "不支持的代码生成类型");
         }
-// 5. 通过校验后，添加用户消息到对话历史
+        // 5. 通过校验后，添加用户消息到对话历史
         chatHistoryService.addChatMessage(appId, message, ChatHistoryMessageTypeEnum.USER.getValue(), loginUser.getId());
-// 6. 调用 AI 生成代码（流式）
+        // 6. 调用 AI 生成代码（流式）
         Flux<String> codeStream = aiCodeGeneratorFacade.generateAndSaveCodeStream(message, codeGenTypeEnum, appId);
-// 7. 收集 AI 响应内容并在完成后记录到对话历史
+        // 7. 收集 AI 响应内容并在完成后记录到对话历史
         return streamHandlerExecutor.doExecute(codeStream, chatHistoryService, appId, loginUser, codeGenTypeEnum);
     }
 
@@ -108,8 +109,9 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         app.setUserId(loginUser.getId());
         // 应用名称暂时为 initPrompt 前 12 位
         app.setAppName(initPrompt.substring(0, Math.min(initPrompt.length(), 12)));
-        // 使用 AI 智能选择代码生成类型
-        CodeGenTypeEnum selectedCodeGenType = aiCodeGenTypeRoutingService.routeCodeGenType(initPrompt);
+        // 使用 AI 智能选择代码生成类型（多例模式）
+        AiCodeGenTypeRoutingService routingService = aiCodeGenTypeRoutingServiceFactory.createAiCodeGenTypeRoutingService();
+        CodeGenTypeEnum selectedCodeGenType = routingService.routeCodeGenType(initPrompt);
         app.setCodeGenType(selectedCodeGenType.getValue());
         // 插入数据库
         boolean result = this.save(app);
