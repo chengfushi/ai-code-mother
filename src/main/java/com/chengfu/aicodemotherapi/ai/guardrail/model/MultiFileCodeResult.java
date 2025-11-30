@@ -1,4 +1,4 @@
-package com.chengfu.aicodemotherapi.ai.model;
+package com.chengfu.aicodemotherapi.ai.guardrail.model;
 
 import dev.langchain4j.model.output.structured.Description;
 import lombok.Data;

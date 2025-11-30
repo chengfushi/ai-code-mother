@@ -15,7 +15,7 @@ import java.util.Map;
  **/
 public class MyBatisCodeGenerator {
 
-    public static final String[] DATABASE_NAMES = {"chat_history"};
+    public static final String[] DATABASE_NAMES = {"user"};
 
     public static void main(String[] args) {
 

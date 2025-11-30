@@ -1,6 +1,5 @@
 package com.chengfu.aicodemotherapi.core.parser;
 
-import com.chengfu.aicodemotherapi.ai.model.HtmlCodeResult;
 import com.chengfu.aicodemotherapi.exception.BusinessException;
 import com.chengfu.aicodemotherapi.exception.ErrorCode;
 import com.chengfu.aicodemotherapi.model.enums.CodeGenTypeEnum;

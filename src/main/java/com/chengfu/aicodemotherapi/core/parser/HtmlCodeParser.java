@@ -1,6 +1,6 @@
 package com.chengfu.aicodemotherapi.core.parser;
 
-import com.chengfu.aicodemotherapi.ai.model.HtmlCodeResult;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.HtmlCodeResult;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

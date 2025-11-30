@@ -1,7 +1,9 @@
 package com.chengfu.aicodemotherapi.config;
 
 import dev.langchain4j.community.store.memory.chat.redis.RedisChatMemoryStore;
+import jodd.util.StringUtil;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author: Chengfu Shi
  * @Description: Redis对话记忆存储配置
  **/
+@Slf4j
 @Configuration
 @ConfigurationProperties(prefix = "spring.data.redis")
 @Data
@@ -25,12 +28,15 @@ public class RedisChatMemoryStoreConfig {
 
     @Bean
     public RedisChatMemoryStore redisChatMemoryStore() {
-        return RedisChatMemoryStore.builder()
+        RedisChatMemoryStore.Builder builder = RedisChatMemoryStore.builder()
                 .host(host)
                 .port(port)
                 .password(password)
-                .ttl(ttl)
-                .build();
+                .ttl(ttl);
+        if (StringUtil.isNotBlank(password)){
+            builder.user("default");
+        }
+        return builder.build();
     }
 }
 

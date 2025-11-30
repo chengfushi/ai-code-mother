@@ -1,7 +1,7 @@
 package com.chengfu.aicodemotherapi.ai;
 
-import com.chengfu.aicodemotherapi.ai.model.HtmlCodeResult;
-import com.chengfu.aicodemotherapi.ai.model.MultiFileCodeResult;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.HtmlCodeResult;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.MultiFileCodeResult;
 import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.TokenStream;
@@ -30,7 +30,7 @@ public interface AiCodeGeneratorService {
      * @author: Chengfu Shi
      * @param: userMessage
      * @return: 代码输出
-     **/
+     **/ 
     @SystemMessage(fromResource = "prompt/codegen-multi-file-system-prompt.txt")
     MultiFileCodeResult generateMultiFileCode(String userMessage);
 

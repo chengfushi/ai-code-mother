@@ -34,5 +34,6 @@ build/
 
 ### CUSTOM ###
 application-local.yml
+application-qwen.yml
 /tmp/
 /src/test/

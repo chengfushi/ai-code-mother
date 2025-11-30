@@ -1,4 +1,4 @@
-package com.chengfu.aicodemotherapi.ai.model.message;
+package com.chengfu.aicodemotherapi.ai.guardrail.model.message;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

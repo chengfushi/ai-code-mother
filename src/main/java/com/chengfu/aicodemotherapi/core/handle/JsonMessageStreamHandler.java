@@ -3,24 +3,21 @@ package com.chengfu.aicodemotherapi.core.handle;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.chengfu.aicodemotherapi.ai.model.message.*;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.message.*;
 import com.chengfu.aicodemotherapi.ai.tools.BaseTool;
 import com.chengfu.aicodemotherapi.ai.tools.ToolManager;
 import com.chengfu.aicodemotherapi.constant.AppConstant;
 import com.chengfu.aicodemotherapi.core.builder.VueProjectBuilder;
 import com.chengfu.aicodemotherapi.model.entity.User;
 import com.chengfu.aicodemotherapi.model.enums.ChatHistoryMessageTypeEnum;
-import com.chengfu.aicodemotherapi.model.vo.user.UserVO;
 import com.chengfu.aicodemotherapi.service.ChatHistoryService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * @Author: Chengfu Shi

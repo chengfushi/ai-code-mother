@@ -18,6 +18,5 @@ public class UserEditRequest implements Serializable {
 
     private String userProfile;
 
-
 }
 

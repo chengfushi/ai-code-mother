@@ -1,7 +1,7 @@
 package com.chengfu.aicodemotherapi.core;
 
-import com.chengfu.aicodemotherapi.ai.model.HtmlCodeResult;
-import com.chengfu.aicodemotherapi.ai.model.MultiFileCodeResult;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.HtmlCodeResult;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.MultiFileCodeResult;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

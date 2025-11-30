@@ -3,8 +3,8 @@ package com.chengfu.aicodemotherapi.core;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
-import com.chengfu.aicodemotherapi.ai.model.HtmlCodeResult;
-import com.chengfu.aicodemotherapi.ai.model.MultiFileCodeResult;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.HtmlCodeResult;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.MultiFileCodeResult;
 import com.chengfu.aicodemotherapi.model.enums.CodeGenTypeEnum;
 
 import java.io.File;

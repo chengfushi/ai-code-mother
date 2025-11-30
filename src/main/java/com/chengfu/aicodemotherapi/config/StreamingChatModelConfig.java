@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import java.time.Duration;
+
 /**
  * 通用流式模型聊天配置
  *
@@ -32,6 +34,8 @@ public class StreamingChatModelConfig {
 
     private boolean logResponses;
 
+    private Duration timeout;
+
     @Bean
     @Scope("prototype")
     public StreamingChatModel streamingChatModelPrototype() {
@@ -43,6 +47,7 @@ public class StreamingChatModelConfig {
                 .temperature(temperature)
                 .logRequests(logRequests)
                 .logResponses(logResponses)
+                .timeout(timeout)
                 .build();
     }
 }

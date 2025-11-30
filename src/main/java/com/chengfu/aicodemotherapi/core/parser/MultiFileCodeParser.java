@@ -1,6 +1,6 @@
 package com.chengfu.aicodemotherapi.core.parser;
 
-import com.chengfu.aicodemotherapi.ai.model.MultiFileCodeResult;
+import com.chengfu.aicodemotherapi.ai.guardrail.model.MultiFileCodeResult;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
